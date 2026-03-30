@@ -1,0 +1,25 @@
+import { loadHeaderSection } from "./sections/header.js";
+import { loadNavbarSection } from "./sections/navbar.js";
+import { loadHeroSection } from "./sections/hero.js";
+import { loadWhatAreMetaGamesSection } from "./sections/what-are-metagames.js";
+import { loadMarqueeSection } from "./sections/marquee.js";
+import { loadNewsUpdateSection } from "./sections/news.js";
+import { loadSportsAndGames } from "./sections/sports-and-games.js";
+import { loadMetaMovement } from "./sections/meta-movement.js";
+import { loadMetagamesEmblems } from "./sections/metagames-emblems.js";
+import { loadThemeSongSection } from "./sections/theme-song.js";
+import { loadHostNationSection } from "./sections/host-nation.js";
+import { loadFooterSection } from "./sections/footer.js";
+
+loadHeaderSection();
+loadNavbarSection();
+loadHeroSection();
+loadWhatAreMetaGamesSection();
+loadMarqueeSection();
+loadNewsUpdateSection();
+loadSportsAndGames();
+loadMetaMovement();
+loadMetagamesEmblems();
+loadThemeSongSection();
+loadHostNationSection();
+loadFooterSection();

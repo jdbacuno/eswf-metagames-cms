@@ -1,0 +1,35 @@
+{
+  "logo": {
+    "src": "src/images/eswf-metagames-logo.webp",
+    "alt": "MetaGames Logo"
+  },
+  "columns": [
+    {
+      "title": "Quick Links:",
+      "links": [
+        { "text": "Home", "url": "#main-content" },
+        { "text": "What Are MetaGames", "url": "#what-are-metagames" },
+        { "text": "News & Updates", "url": "#news-and-update" }
+      ]
+    },
+    {
+      "title": "",
+      "links": [
+        { "text": "Sports & Games", "url": "#sports-and-games" },
+        { "text": "Meta Movement", "url": "#meta-movement" },
+        { "text": "Emblem & Meaning", "url": "#metagames-emblems" }
+      ]
+    },
+    {
+      "title": "",
+      "links": [
+        { "text": "Official Theme Song", "url": "#theme-song" },
+        { "text": "Host Nations", "url": "#host-section" }
+      ]
+    }
+  ],
+  "bottomBar": {
+    "copyright": "© 2025 MetaGames All Rights Reserved.",
+    "credit": "Designed & Developed by: BB 88 Advertising and Digital Solutions Inc."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "eswf-metagames",
+  "version": "1.0.0",
+  "description": "ESWF MetaGames Website",
+  "license": "ISC",
+  "author": "Dic Lagura, Eugene Kyle Santos, Jonas Bacuño",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "tw:build": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  }
+}

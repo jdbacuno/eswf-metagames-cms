@@ -1,0 +1,28 @@
+{
+  "title": "Host Nations &amp; Partners",
+  "subtitle": "Host Cities:",
+  "flagImages": [
+    {
+      "src": "src/images/ph-flag.webp",
+      "alt": "Manila, Philippines"
+    },
+    {
+      "src": "src/images/china-flag.webp",
+      "alt": "Xinjiang, China"
+    }
+  ],
+  "partnerImages": [
+    {
+      "src": "src/images/eswf.webp",
+      "alt": "ESWF"
+    },
+    {
+      "src": "src/images/gawsf.webp",
+      "alt": "GAWSF"
+    },
+    {
+      "src": "src/images/psc-logo.webp",
+      "alt": "PSC Logo"
+    }
+  ]
+}

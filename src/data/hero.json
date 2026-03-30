@@ -1,0 +1,39 @@
+{
+  "backgroundImage": {
+    "src": "src/images/esports-arena.webp",
+    "alt": "Esports Arena"
+  },
+  "cards": [
+    { 
+     "image": {
+        "src": "src/images/eswf-metagames-logo.webp",
+        "alt": "ESWF MetaGames logo"
+      },
+      "text": "Learn What MetaGames", 
+      "url": "#what-are-metagames" 
+    },
+    { 
+      "image": {
+        "src": "src/images/children-with-vr.webp",
+        "alt": "Children playing with VR"
+      }, 
+      "text": "Explore Sports & Games", 
+      "url": "#sports-and-games" 
+    },
+    { 
+      "image": {
+        "src": "src/images/puzzle.webp",
+        "alt": "Jigsaw puzzle"
+      }, 
+      "text": "Join the Movement", 
+      "url": "#meta-movement" 
+    }
+  ],
+  "cta": {
+    "text": "Welcome to the MetaGames"
+  },
+  "catchphrase": {
+    "text": "Where Sports, Games, and Digital Worlds Unite",
+    "paragraph": "MetaGames is a global movement that brings together traditional sports, esports, digital sports, and virtual experiences into one unified international event."
+  }
+}

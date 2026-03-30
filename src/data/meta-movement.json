@@ -1,0 +1,33 @@
+{
+  "title": "The Meta Movement",
+  "subtitle": "The Rise of the Meta Movement (2025–2027)",
+  "colors": [ "bg-brand-green", "bg-brand-blue", "bg-brand-yellow", "bg-brand-red", "bg-white", "bg-black" ],
+  "watchCard": {
+    "image": "src/images/watch.webp",
+    "alt": "Person wearing smartwatch with dumbbells",
+    "text": "Physical Fitness",
+    "description": "Promoting healthy, active lifestyles through sports and movement, encouraging people of all ages to stay strong, energized, and well."
+  },
+  "vrheadsetCard": {
+    "image": "src/images/meta-vr-headset.webp",
+    "alt": "Person wearing AR headset",
+    "text": "Digital Innovation"
+  },
+  "girlCostumeCard": {
+    "image": "src/images/girl-in-cultural-costume.webp",
+    "alt": "Girl in traditional cultural costume",
+    "text": "Cultural Unity"
+  },
+  "playFairCard": {
+    "image": "src/images/play-fair.webp",
+    "alt": "Children playing together",
+    "text": "Fair Play & Inclusivity"
+  },
+  "audienceBar": [ 
+    "Athletes",
+    "Gamers",
+    "Students",
+    "Professionals",
+    "Nations"
+  ]
+}

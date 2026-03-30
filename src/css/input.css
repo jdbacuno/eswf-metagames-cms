@@ -1,0 +1,364 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand colors */
+  --color-dark-navy: #141b25;
+  --color-brand-green: #31aa68;
+  --color-brand-blue: #217ec7;
+  --color-brand-yellow: #f6d52d;
+  --color-brand-red: #f33847;
+  --color-brand-slate: #434850;
+  --color-light-blue: #eef7fe;
+  --color-btn-red: #ff0000;
+
+  --color-surface: #0d1117;
+  --color-surface-card: #161b22;
+  --color-surface-row: #21262d;
+  --color-border: #30363d;
+  --color-muted: #8b949e;
+  --color-text: #e6edf3;
+  --color-accent: #1e88e5;
+  --color-accent-hover: #1a6aab;
+  --color-success: #3fb950;
+  --color-success-bg: #1f3d29;
+  --color-danger: #f85149;
+  --color-badge-blue-bg: #1f2d3d;
+  --color-badge-blue-fg: #58a6ff;
+
+  /* Font */
+  --font-sans: 'Calibri', 'Carlito', 'Trebuchet MS', sans-serif;
+
+  /* Animations */
+  --animate-title-fade-in: titleFadeIn 0.8s ease both;
+  --animate-logo-slide-in: logoSlideIn 0.5s ease both;
+  --animate-btn-slide-in: btnSlideIn 0.5s ease both 0.3s;
+  --animate-link-drop-1: linkDrop 0.45s ease both 0.08s;
+  --animate-link-drop-2: linkDrop 0.45s ease both 0.13s;
+  --animate-link-drop-3: linkDrop 0.45s ease both 0.18s;
+  --animate-link-drop-4: linkDrop 0.45s ease both 0.23s;
+  --animate-link-drop-5: linkDrop 0.45s ease both 0.28s;
+  --animate-link-drop-6: linkDrop 0.45s ease both 0.33s;
+  --animate-link-drop-7: linkDrop 0.45s ease both 0.38s;
+  --animate-link-drop-8: linkDrop 0.45s ease both 0.43s;
+  --animate-fade-up-1: fadeSlideUp 0.7s ease both 0.1s;
+  --animate-fade-up-2: fadeSlideUp 0.7s ease both 0.25s;
+  --animate-fade-up-3: fadeSlideUp 0.7s ease both 0.4s;
+  --animate-fade-up-4: fadeSlideUp 0.7s ease both 0.55s;
+  --animate-card-1: fadeSlideUp 0.6s ease both 0.55s;
+  --animate-card-2: fadeSlideUp 0.6s ease both 0.7s;
+  --animate-card-3: fadeSlideUp 0.6s ease both 0.85s;
+  --animate-marquee: marquee 20s linear infinite;
+
+  /* Keyframes */
+  @keyframes titleFadeIn {
+    from {
+      opacity: 0;
+      letter-spacing: 0.7rem;
+    }
+    to {
+      opacity: 1;
+      letter-spacing: clamp(0.15rem, 1vw, 0.45rem);
+    }
+  }
+  @keyframes logoSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes btnSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes linkDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(100vw);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* CSS variables for color-wheel.js */
+:root {
+  --green: #31aa68;
+  --blue: #217ec7;
+  --yellow: #f6d52d;
+  --red: #f33847;
+  --slate: #434850;
+}
+
+/* Emblems card — initial state; color-wheel.js overwrites dynamically */
+.emblems__card {
+  background: linear-gradient(90deg, #0b437b 0%, #1e73be 100%);
+  color: #ffffff;
+}
+.emblems__text-content,
+.emblems__text-content * {
+  color: inherit;
+}
+
+/* Emblem nav buttons — transparent bg, hover only on real pointer devices */
+.emblems__btn {
+  background: transparent;
+}
+@media (hover: hover) {
+  .emblems__btn:hover {
+    background: white;
+  }
+}
+
+/* Navbar active link — desktop */
+.nav-links-desktop a.active {
+  background: #ffffff;
+  color: #141b25;
+  font-weight: 700;
+}
+.nav-links-desktop a.active::after {
+  display: none;
+}
+
+/* Navbar active link — mobile drawer */
+#navLinks a.active {
+  background: #ffffff;
+  color: #141b25;
+  font-weight: 700;
+}
+
+/* linkSlideIn keyframe used by JS triggerLinkAnimations() */
+@keyframes linkSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Nav hover underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hero heading decorative line */
+.hero-heading::after {
+  content: '';
+  display: block;
+  width: 500px;
+  height: 2px;
+  background: #fff;
+  margin: 10px auto 0;
+  opacity: 0.75;
+}
+@media (max-width: 1024px) {
+  .hero-heading::after {
+    width: 320px;
+  }
+}
+@media (max-width: 768px) {
+  .hero-heading::after {
+    width: 200px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-heading::after {
+    width: 140px;
+  }
+}
+
+/* Marquee repeated text */
+.marquee-text::after {
+  content: ' \2022  Mastering the MetaGames of Life, One Move at a Time. \2022  Mastering the MetaGames of Life, One Move at a Time. \2022  Mastering the MetaGames of Life, One Move at a Time. \2022 ';
+}
+
+/* Image masks */
+.wam-bg {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 40%,
+    black 60%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 40%,
+    black 60%,
+    black 100%
+  );
+}
+.sports-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 10%,
+    black 25%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 10%,
+    black 25%,
+    black 100%
+  );
+}
+
+/* Emblem wheel conic-gradient */
+.wheel,
+.emblem-wheel {
+  background: conic-gradient(
+    #31aa68 0deg 51.4deg,
+    #217ec7 51.4deg 102.8deg,
+    #f6d52d 102.8deg 154.2deg,
+    #f33847 154.2deg 205.6deg,
+    #ffffff 205.6deg 257deg,
+    #000000 257deg 308.4deg,
+    #434850 308.4deg 360deg
+  );
+}
+
+/* Wheel pointer triangle */
+.wheel-pointer {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 20px solid white;
+  margin-left: -10px;
+  z-index: 11;
+  filter: drop-shadow(-2px 0 2px rgba(0, 0, 0, 0.2));
+}
+@media (max-width: 640px) {
+  .wheel-pointer {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid white;
+    border-bottom: none;
+    margin-left: 0;
+    margin-top: -10px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+  }
+}
+
+/* Custom scrollbar — lyrics */
+.lyrics-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+.lyrics-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.lyrics-scroll::-webkit-scrollbar-thumb {
+  background: #7a7a7a;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.lyrics-scroll::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+.lyrics-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #7a7a7a transparent;
+}
+
+/* Scroll-reveal (JS adds .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal-sm {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease 0.25s,
+    transform 0.5s ease 0.25s;
+}
+.reveal.is-visible,
+.reveal-sm.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.news-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.news-header.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.news-containter img {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease 0.2s,
+    transform 0.7s ease 0.2s;
+}
+.news-containter img.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Partners full-width breakout */
+.partners-block {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ADMIN */
