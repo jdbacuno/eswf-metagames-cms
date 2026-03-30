@@ -14,3 +14,4 @@
 ---
 - In the project folder, install dependencies: `npm install`
 - Start the Tailwind CLI build process: `npm run tw:build`
+- To visit **Admin CMS**: `https://eswf-metagames-cms.test/src/admin`
