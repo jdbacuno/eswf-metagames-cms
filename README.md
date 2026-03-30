@@ -1,19 +1,16 @@
-# ESWF METAGAMES WEBSITE
+# ESWF METAGAMES CMS
 
 ## Instructions
 
-- Convert the existing vanilla CSS website using **Tailwind CSS v4**
-- Use **Tailwind CLI** for installation
-- Create new repository
-- Use hydration technique to inject dynamic content into components using ES6 Modules
-- Use collaborator with your new member, a commit should define a specific change, not just a one-time single commit, all members should have contributions to the projec
+- Collaborate on implementing Admin panel and CMS functionality for **ESWF MetaGames** website
 
-## Mockup Images
+## Setup
 
-### Mockup 1
-
-![Mockup 1](src/images/metagames-mockup-1.webp)
-
-### Mockup 2
-
-![Mockup 2](src/images/metagames-mockup-2.webp)
+- Clone the repo: `git clone https://github.com/jdbacuno/eswf-metagames-cms.git`
+- Make sure to clone or place the project folder in the Laravel Herd sites or XAMPP's htdocs folder: `Users\username\Herd\eswf-metagames-cms\`
+---
+- Before visiting `https://eswf-metagames-cms.test/` in the browser, login on  **phpMyAdmin.test** to import the `setup.sql`
+- Replace the password in the `define('DB_PASS', 'Jonas26!');` of `config/database.php` with the password of your database
+---
+- In the project folder, install dependencies: `npm install`
+- Start the Tailwind CLI build process: `npm run tw:build`
