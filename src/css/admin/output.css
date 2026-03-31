@@ -3,7 +3,7 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: 'Calibri', 'Carlito', 'Trebuchet MS', sans-serif;
+    --font-sans: system-ui, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-black: #000;
@@ -41,19 +41,12 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-dark-navy: #141b25;
-    --color-brand-green: #31aa68;
-    --color-brand-blue: #217ec7;
-    --color-brand-yellow: #f6d52d;
-    --color-brand-red: #f33847;
-    --color-light-blue: #eef7fe;
-    --color-btn-red: #ff0000;
     --color-surface: #0d1117;
     --color-surface-card: #161b22;
     --color-surface-row: #21262d;
     --color-border: #30363d;
-    --color-muted: #8b949e;
     --color-text: #e6edf3;
+    --color-muted: #8b949e;
     --color-accent: #1e88e5;
     --color-accent-hover: #1a6aab;
     --color-success: #3fb950;
@@ -61,15 +54,8 @@
     --color-danger: #f85149;
     --color-badge-blue-bg: #1f2d3d;
     --color-badge-blue-fg: #58a6ff;
-    --animate-title-fade-in: titleFadeIn 0.8s ease both;
-    --animate-logo-slide-in: logoSlideIn 0.5s ease both;
-    --animate-btn-slide-in: btnSlideIn 0.5s ease both 0.3s;
-    --animate-fade-up-1: fadeSlideUp 0.7s ease both 0.1s;
-    --animate-fade-up-2: fadeSlideUp 0.7s ease both 0.25s;
-    --animate-fade-up-3: fadeSlideUp 0.7s ease both 0.4s;
-    --animate-fade-up-4: fadeSlideUp 0.7s ease both 0.55s;
-    --animate-card-1: fadeSlideUp 0.6s ease both 0.55s;
-    --animate-marquee: marquee 20s linear infinite;
+    --color-btn-green: #238636;
+    --color-btn-green-hover: #1a6929;
   }
 }
 @layer base {
@@ -642,33 +628,6 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
-  .animate-btn-slide-in {
-    animation: var(--animate-btn-slide-in);
-  }
-  .animate-card-1 {
-    animation: var(--animate-card-1);
-  }
-  .animate-fade-up-1 {
-    animation: var(--animate-fade-up-1);
-  }
-  .animate-fade-up-2 {
-    animation: var(--animate-fade-up-2);
-  }
-  .animate-fade-up-3 {
-    animation: var(--animate-fade-up-3);
-  }
-  .animate-fade-up-4 {
-    animation: var(--animate-fade-up-4);
-  }
-  .animate-logo-slide-in {
-    animation: var(--animate-logo-slide-in);
-  }
-  .animate-marquee {
-    animation: var(--animate-marquee);
-  }
-  .animate-title-fade-in {
-    animation: var(--animate-title-fade-in);
-  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -863,21 +822,6 @@
   .bg-black {
     background-color: var(--color-black);
   }
-  .bg-brand-blue {
-    background-color: var(--color-brand-blue);
-  }
-  .bg-brand-green {
-    background-color: var(--color-brand-green);
-  }
-  .bg-brand-red {
-    background-color: var(--color-brand-red);
-  }
-  .bg-brand-yellow {
-    background-color: var(--color-brand-yellow);
-  }
-  .bg-btn-red {
-    background-color: var(--color-btn-red);
-  }
   .bg-danger {
     background-color: var(--color-danger);
   }
@@ -886,9 +830,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-danger) 10%, transparent);
     }
-  }
-  .bg-dark-navy {
-    background-color: var(--color-dark-navy);
   }
   .bg-success-bg {
     background-color: var(--color-success-bg);
@@ -1323,14 +1264,8 @@
   .text-black {
     color: var(--color-black);
   }
-  .text-brand-blue {
-    color: var(--color-brand-blue);
-  }
   .text-danger {
     color: var(--color-danger);
-  }
-  .text-dark-navy {
-    color: var(--color-dark-navy);
   }
   .text-muted {
     color: var(--color-muted);
@@ -1598,20 +1533,6 @@
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--color-white) 14.000000000000002%, transparent);
         }
-      }
-    }
-  }
-  .hover\:text-brand-blue {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-brand-blue);
-      }
-    }
-  }
-  .hover\:text-light-blue {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-light-blue);
       }
     }
   }
@@ -2861,49 +2782,182 @@
     }
   }
 }
-:root {
-  --green: #31aa68;
-  --blue: #217ec7;
-  --yellow: #f6d52d;
-  --red: #f33847;
-  --slate: #434850;
+#toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  z-index: 9999;
 }
-.emblems__card {
-  background: linear-gradient(90deg, #0b437b 0%, #1e73be 100%);
-  color: #ffffff;
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
-.emblems__text-content, .emblems__text-content * {
-  color: inherit;
+#toast.success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
 }
-.emblems__btn {
-  background: transparent;
+#toast.error {
+  background: rgba(248,81,73,.15);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
 }
-@media (hover: hover) {
-  .emblems__btn:hover {
-    background: white;
-  }
-}
-.nav-links-desktop a.active {
-  background: #ffffff;
-  color: #141b25;
-  font-weight: 700;
-}
-.nav-links-desktop a.active::after {
-  display: none;
-}
-#navLinks a.active {
-  background: #ffffff;
-  color: #141b25;
-  font-weight: 700;
-}
-@keyframes linkSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
+@keyframes shimmer {
   to {
-    opacity: 1;
-    transform: translateX(0);
+    background-position: -200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, #21262d 25%, #30363d 50%, #21262d 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+  height: 36px;
+}
+@layer components {
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.1rem;
+  }
+  .card-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 9px;
+    border-radius: 20px;
+  }
+  .badge-update {
+    background: var(--color-badge-blue-bg);
+    color: var(--color-badge-blue-fg);
+    border: 1px solid var(--color-accent);
+  }
+  .badge-crud {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+  }
+  .field {
+    margin-bottom: 0.85rem;
+  }
+  .field:last-child {
+    margin-bottom: 0;
+  }
+  .field label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-bottom: 3px;
+  }
+  .field input {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+  }
+  .links-list input[type="text"], .add-row input[type="text"], .card input[type="text"] {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+  }
+  .links-list input[type="text"]:focus, .add-row input[type="text"]:focus, .card input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  .btn {
+    padding: 0.45rem 1rem;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-blue {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  .btn-blue:hover:not(:disabled) {
+    background: var(--color-accent-hover);
+  }
+  .btn-green {
+    background: var(--color-btn-green);
+    color: #fff;
+  }
+  .btn-green:hover:not(:disabled) {
+    background: var(--color-btn-green-hover);
+  }
+  .btn-ghost-red {
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+  }
+  .btn-ghost-red:hover:not(:disabled) {
+    background: rgba(248,81,73,.12);
+  }
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .link-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--color-surface-row);
+  }
+  .link-item:last-child {
+    border-bottom: none;
+  }
+  .links-list .link-item:has(input + input) {
+    grid-template-columns: 1fr 1fr auto auto;
+  }
+  .empty-note {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+  }
+  .add-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-border);
+    align-items: end;
+  }
+  .add-row .field {
+    margin-bottom: 0;
+  }
+  .add-row:has(.add-input + .add-input) {
+    grid-template-columns: 1fr 1fr auto;
   }
 }
 .nav-link::after {
@@ -2917,127 +2971,10 @@
   border-radius: 2px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0, 1);
+  transition: transform 0.25s cubic-bezier(.4,0,0,1);
 }
 .nav-link:hover::after {
   transform: scaleX(1);
-}
-.hero-heading::after {
-  content: '';
-  display: block;
-  width: 500px;
-  height: 2px;
-  background: #fff;
-  margin: 10px auto 0;
-  opacity: 0.75;
-}
-@media (max-width: 1024px) {
-  .hero-heading::after {
-    width: 320px;
-  }
-}
-@media (max-width: 768px) {
-  .hero-heading::after {
-    width: 200px;
-  }
-}
-@media (max-width: 480px) {
-  .hero-heading::after {
-    width: 140px;
-  }
-}
-.marquee-text::after {
-  content: ' \2022  Mastering the MetaGames of Life, One Move at a Time. \2022  Mastering the MetaGames of Life, One Move at a Time. \2022  Mastering the MetaGames of Life, One Move at a Time. \2022 ';
-}
-.wam-bg {
-  -webkit-mask-image: linear-gradient( to right, transparent 0%, transparent 40%, black 60%, black 100% );
-  mask-image: linear-gradient( to right, transparent 0%, transparent 40%, black 60%, black 100% );
-}
-.sports-mask {
-  -webkit-mask-image: linear-gradient( to right, transparent 0%, rgba(0, 0, 0, 0.3) 10%, black 25%, black 100% );
-  mask-image: linear-gradient( to right, transparent 0%, rgba(0, 0, 0, 0.3) 10%, black 25%, black 100% );
-}
-.wheel, .emblem-wheel {
-  background: conic-gradient( #31aa68 0deg 51.4deg, #217ec7 51.4deg 102.8deg, #f6d52d 102.8deg 154.2deg, #f33847 154.2deg 205.6deg, #ffffff 205.6deg 257deg, #000000 257deg 308.4deg, #434850 308.4deg 360deg );
-}
-.wheel-pointer {
-  width: 0;
-  height: 0;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-left: 20px solid white;
-  margin-left: -10px;
-  z-index: 11;
-  filter: drop-shadow(-2px 0 2px rgba(0, 0, 0, 0.2));
-}
-@media (max-width: 640px) {
-  .wheel-pointer {
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 20px solid white;
-    border-bottom: none;
-    margin-left: 0;
-    margin-top: -10px;
-    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
-  }
-}
-.lyrics-scroll::-webkit-scrollbar {
-  width: 12px;
-}
-.lyrics-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-.lyrics-scroll::-webkit-scrollbar-thumb {
-  background: #7a7a7a;
-  border-radius: 10px;
-  border: 3px solid transparent;
-  background-clip: content-box;
-}
-.lyrics-scroll::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-.lyrics-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: #7a7a7a transparent;
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal-sm {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
-}
-.reveal.is-visible, .reveal-sm.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.news-header {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.news-header.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.news-containter img {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
-}
-.news-containter img.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.partners-block {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
 }
 @property --tw-translate-x {
   syntax: "*";
@@ -3272,54 +3209,6 @@
   syntax: "*";
   inherits: false;
   initial-value: 1;
-}
-@keyframes titleFadeIn {
-  from {
-    opacity: 0;
-    letter-spacing: 0.7rem;
-  }
-  to {
-    opacity: 1;
-    letter-spacing: clamp(0.15rem, 1vw, 0.45rem);
-  }
-}
-@keyframes logoSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes btnSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes marquee {
-  from {
-    transform: translateX(100vw);
-  }
-  to {
-    transform: translateX(-100%);
-  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {

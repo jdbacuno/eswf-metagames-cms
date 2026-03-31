@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+
+/*
+  Admin-panel design tokens.
+  These mirror the dark GitHub-style palette used across all admin pages.
+*/
+@theme {
+  /* Surface hierarchy */
+  --color-surface:      #0d1117;
+  --color-surface-card: #161b22;
+  --color-surface-row:  #21262d;
+  --color-border:       #30363d;
+
+  /* Text */
+  --color-text:   #e6edf3;
+  --color-muted:  #8b949e;
+
+  /* Accent (blue) */
+  --color-accent:       #1e88e5;
+  --color-accent-hover: #1a6aab;
+
+  /* Status */
+  --color-success:    #3fb950;
+  --color-success-bg: #1f3d29;
+  --color-danger:     #f85149;
+
+  /* Badge – blue */
+  --color-badge-blue-bg: #1f2d3d;
+  --color-badge-blue-fg: #58a6ff;
+
+  /* Button – green */
+  --color-btn-green:       #238636;
+  --color-btn-green-hover: #1a6929;
+
+  /* Font */
+  --font-sans: system-ui, sans-serif;
+}
+
+/* ── Toast ────────────────────────────────────────────────────── */
+#toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  z-index: 9999;
+}
+#toast.show    { opacity: 1; transform: translateY(0); }
+#toast.success { background: var(--color-success-bg); color: var(--color-success); border: 1px solid var(--color-success); }
+#toast.error   { background: rgba(248,81,73,.15);     color: var(--color-danger);  border: 1px solid var(--color-danger);  }
+
+/* ── Skeleton shimmer ─────────────────────────────────────────── */
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #21262d 25%, #30363d 50%, #21262d 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+  height: 36px;
+}
+
+/*
+  ── JS-injected component classes ─────────────────────────────
+  ArrayEditor and ObjectEditor build HTML strings at runtime, so
+  their class names cannot be written as inline Tailwind utilities
+  in PHP templates. Define them here as @layer components instead.
+*/
+@layer components {
+
+  /* Card layout injected by both editors */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.1rem;
+  }
+  .card-header h2 { font-size: 1rem; font-weight: 600; }
+
+  /* Badges */
+  .badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 9px;
+    border-radius: 20px;
+  }
+  .badge-update {
+    background: var(--color-badge-blue-bg);
+    color: var(--color-badge-blue-fg);
+    border: 1px solid var(--color-accent);
+  }
+  .badge-crud {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+  }
+
+  /* Field wrapper */
+  .field { margin-bottom: 0.85rem; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-bottom: 3px;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+  }
+
+  /* Text inputs rendered by editors */
+  .links-list input[type="text"],
+  .add-row input[type="text"],
+  .card input[type="text"]  {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+  }
+  .links-list input[type="text"]:focus,
+  .add-row input[type="text"]:focus,
+  .card input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-blue { background: var(--color-accent); color: #fff; }
+  .btn-blue:hover:not(:disabled) { background: var(--color-accent-hover); }
+
+  .btn-green { background: var(--color-btn-green); color: #fff; }
+  .btn-green:hover:not(:disabled) { background: var(--color-btn-green-hover); }
+
+  .btn-ghost-red {
+    background: transparent;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger);
+  }
+  .btn-ghost-red:hover:not(:disabled) { background: rgba(248,81,73,.12); }
+
+  /* Links / items list */
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Single-field row (header colors – 1 input + 2 buttons) */
+  .link-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--color-surface-row);
+  }
+  .link-item:last-child { border-bottom: none; }
+
+  /* Two-field row (navbar links – 2 inputs + 2 buttons) */
+  .links-list .link-item:has(input + input) {
+    grid-template-columns: 1fr 1fr auto auto;
+  }
+
+  /* Empty state */
+  .empty-note { font-size: 0.82rem; color: var(--color-muted); }
+
+  /* Add row */
+  .add-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-border);
+    align-items: end;
+  }
+  .add-row .field { margin-bottom: 0; }
+
+  /* Two-field add row (navbar links) */
+  .add-row:has(.add-input + .add-input) {
+    grid-template-columns: 1fr 1fr auto;
+  }
+}
+
+/* ── Nav-link hover underline (desktop navbar preview) ────────── */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 3px; left: 10px; right: 10px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(.4,0,0,1);
+}
+.nav-link:hover::after { transform: scaleX(1); }
