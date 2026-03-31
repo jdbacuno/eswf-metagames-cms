@@ -3,7 +3,7 @@
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'metagames_cms'); // set this up on your phpMyAdmin
 define('DB_USER', 'root');
-define('DB_PASS', 'Jonas26!'); // change this to your db password
+define('DB_PASS', 'JOKERfan17#4444'); // change this to your db password
 define('DB_CHARSET', 'utf8mb4');
 
 function getPDO(): PDO

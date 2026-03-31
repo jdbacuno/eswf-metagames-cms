@@ -1,4 +1,4 @@
-const DATA_HERO = "./src/data/hero.json";
+const DATA_HERO = "/api/public/get-section.php?section=hero";
 
 export const loadHeroSection = async () => {
   try {
