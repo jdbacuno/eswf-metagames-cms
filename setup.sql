@@ -26,7 +26,7 @@ CREATE TABLE page_sections (
 INSERT INTO page_sections (section, content) VALUES
 ('header', '{
   "id": 1,
-  "title": "DIC 💗 ALLAYNE 4EVER",
+  "title": "HAWAK NI EUGENE ANG BEAT",
   "colors": [
     "bg-brand-green","bg-brand-blue","bg-brand-yellow",
     "bg-brand-red","bg-white","bg-black"
