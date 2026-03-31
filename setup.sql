@@ -26,7 +26,7 @@ CREATE TABLE page_sections (
 INSERT INTO page_sections (section, content) VALUES
 ('header', '{
   "id": 1,
-  "title": "MetaGames",
+  "title": "DIC 💗 ALLAYNE 4EVER",
   "colors": [
     "bg-brand-green","bg-brand-blue","bg-brand-yellow",
     "bg-brand-red","bg-white","bg-black"
@@ -46,6 +46,7 @@ INSERT INTO page_sections (section, content) VALUES
     { "text": "What Are MetaGames", "url": "#what-are-metagames" },
     { "text": "News & Updates",     "url": "#news-and-update"    },
     { "text": "Sports & Games",     "url": "#sports-and-games"   },
-    { "text": "Meta Movement",      "url": "#meta-movement"      }
+    { "text": "Meta Movement",      "url": "#meta-movement"      },
+    { "text": "Love Story",      "url": "#theme-song"      }
   ]
 }');
