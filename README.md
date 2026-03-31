@@ -9,7 +9,7 @@
 - Clone the repo: `git clone https://github.com/jdbacuno/eswf-metagames-cms.git`
 - Make sure to clone or place the project folder in the Laravel Herd sites or XAMPP's htdocs folder: `Users\username\Herd\eswf-metagames-cms\`
 ---
-- Before visiting `https://eswf-metagames-cms.test/` in the browser, login on  **phpMyAdmin.test** to import the `setup.sql`
+- Before visiting `https://eswf-metagames-cms.test/` (*if you use Laravel Herd*) in the browser, login on  **phpMyAdmin.test** (*if you use Laravel Herd*) to import the `setup.sql`
 - Replace the password in the `define('DB_PASS', 'Jonas26!');` of `config/database.php` with the password of your database
 ---
 - In the project folder, install dependencies: `npm install`
