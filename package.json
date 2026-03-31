@@ -7,10 +7,15 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "tw:build": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch"
+    "tw:build": "npx @tailwindcss/cli -i ./src/css/input.css       -o ./src/css/output.css       --watch",
+    "tw:build:admin": "npx @tailwindcss/cli -i ./src/css/admin/input.css -o ./src/css/admin/output.css --watch",
+    "tw:build:all": "concurrently \"npm run tw:build\" \"npm run tw:build:admin\""
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.2.2",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

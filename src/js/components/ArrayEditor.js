@@ -72,7 +72,7 @@ export const ArrayEditor = {
                 <span class="badge badge-crud">Full CRUD</span>
             </div>
             <div class="links-list">${rowsHtml}</div>
-            <div class="add-row">
+            <div class="add-row">           
                 ${addInputsHtml}
                 <button class="btn btn-green btn-add">+ Add</button>
             </div>

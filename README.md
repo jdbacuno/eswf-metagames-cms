@@ -13,5 +13,5 @@
 - Replace the password in the `define('DB_PASS', 'Jonas26!');` of `config/database.php` with the password of your database
 ---
 - In the project folder, install dependencies: `npm install`
-- Start the Tailwind CLI build process: `npm run tw:build`
+- Start the Tailwind CLI build process: `npm run tw:build:all`
 - To visit **Admin CMS**: `https://eswf-metagames-cms.test/src/admin`
