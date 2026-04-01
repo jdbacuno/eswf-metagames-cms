@@ -63,7 +63,7 @@ INSERT INTO page_sections (section, content) VALUES
       "url": "#what-are-metagames"
     },
     {
-      "imageSrc": "https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.6435-9/75262136_534834370412576_2365792025292308480_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeF4SOfm1lh1BehU10iVoIVvXHMWcrE1W5tccxZysTVbmyU8oVMSsgKWjqrZbN4aqIgmLaXAf4IbsrWSi_r3P3ZW&_nc_ohc=VTz9v18pmUwQ7kNvwFzLMiN&_nc_oc=AdooJHVvqKyM3xWudrQ5BAxCc9bnmPa3_Sa1c6RTTx7AXrGbu5nHm4A_xO7L6RGgtLrcrgBwuj4yEH4e-PdMGVVv&_nc_zt=23&_nc_ht=scontent.fmnl4-4.fna&_nc_gid=KqX8ZnJtAz8o2lqOrR3_GQ&_nc_ss=7a3a8&oh=00_Af2Nhe2ptbOQ8RivCOKLOLbGoguXxg4Fn2lFG9N68PouDQ&oe=69F3F8EF,
+      "imageSrc": "https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.6435-9/75262136_534834370412576_2365792025292308480_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeF4SOfm1lh1BehU10iVoIVvXHMWcrE1W5tccxZysTVbmyU8oVMSsgKWjqrZbN4aqIgmLaXAf4IbsrWSi_r3P3ZW&_nc_ohc=VTz9v18pmUwQ7kNvwFzLMiN&_nc_oc=AdooJHVvqKyM3xWudrQ5BAxCc9bnmPa3_Sa1c6RTTx7AXrGbu5nHm4A_xO7L6RGgtLrcrgBwuj4yEH4e-PdMGVVv&_nc_zt=23&_nc_ht=scontent.fmnl4-4.fna&_nc_gid=KqX8ZnJtAz8o2lqOrR3_GQ&_nc_ss=7a3a8&oh=00_Af2Nhe2ptbOQ8RivCOKLOLbGoguXxg4Fn2lFG9N68PouDQ&oe=69F3F8EF",
       "imageAlt": "Children playing with VR",
       "text": "Explore Sports & Games",
       "url": "#sports-and-games"
