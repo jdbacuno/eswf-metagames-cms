@@ -6,86 +6,49 @@ const API = "/api/admin/hero.php";
 
 const data = await apiGet(API);
 
-// Title — simple string field
-ObjectEditor.mount({
-  container: "#card-title",
-  label: "Hero Title",
-  data: { value: data.title },
-  fields: [
-    { key: "value", label: "Title", placeholder: "Welcome to ESWF MetaGames" },
-  ],
-  onSave: (obj) => apiPatch(API, "title", obj.value),
-});
-
-// Subtitle — simple string field
-ObjectEditor.mount({
-  container: "#card-subtitle",
-  label: "Hero Subtitle",
-  data: { value: data.subtitle },
-  fields: [
-    { key: "value", label: "Subtitle", placeholder: "The Future of Competitive Gaming" },
-  ],
-  onSave: (obj) => apiPatch(API, "subtitle", obj.value),
-});
-
-// Description — simple string field
-ObjectEditor.mount({
-  container: "#card-description",
-  label: "Hero Description",
-  data: { value: data.description },
-  fields: [
-    { key: "value", label: "Description", placeholder: "Enter hero description..." },
-  ],
-  onSave: (obj) => apiPatch(API, "description", obj.value),
-});
-
-// Primary CTA — object field
-ObjectEditor.mount({
-  container: "#card-cta-primary",
-  label: "Primary CTA",
-  data: data.cta_primary,
-  fields: [
-    { key: "text", label: "Button text", placeholder: "Join Now" },
-    { key: "url", label: "URL", placeholder: "#join" },
-  ],
-  onSave: (value) => apiPatch(API, "cta_primary", value),
-});
-
-// Secondary CTA — object field
-ObjectEditor.mount({
-  container: "#card-cta-secondary",
-  label: "Secondary CTA",
-  data: data.cta_secondary,
-  fields: [
-    { key: "text", label: "Button text", placeholder: "Learn More" },
-    { key: "url", label: "URL", placeholder: "#about" },
-  ],
-  onSave: (value) => apiPatch(API, "cta_secondary", value),
-});
-
-// Background Image — object field
 ObjectEditor.mount({
   container: "#card-background",
-  label: "Background Image",
-  data: data.background_image,
+  label: "Background image",
+  data: data.backgroundImage,
   fields: [
-    { key: "src", label: "Image src", placeholder: "src/images/hero-bg.webp" },
-    { key: "alt", label: "Alt text", placeholder: "Hero background" },
+    { key: "src", label: "Image src" },
+    { key: "alt", label: "Alt text" },
   ],
-  onSave: (value) => apiPatch(API, "background_image", value),
+  onSave: (value) => apiPatch(API, "backgroundImage", value),
 });
 
-// Features — array field, full CRUD
-ArrayEditor.mount({
-  container: "#card-features",
-  label: "Hero Features",
-  items: data.features,
+ObjectEditor.mount({
+  container: "#card-cta",
+  label: "Welcome line",
+  data: data.cta,
   fields: [
-    { key: "icon", label: "Icon class", placeholder: "fa-solid fa-trophy" },
-    { key: "title", label: "Feature title", placeholder: "Feature Title" },
-    { key: "description", label: "Description", placeholder: "Feature description" },
+    { key: "text", label: "Main heading (shown as hero title)" },
   ],
-  onSave: (index, value) => apiPatch(API, "features", value, index),
-  onDelete: (index) => apiDelete(API, "features", index),
-  onAdd: (item) => apiPost(API, "features", item),
+  onSave: (value) => apiPatch(API, "cta", value),
+});
+
+ObjectEditor.mount({
+  container: "#card-catchphrase",
+  label: "Tagline & paragraph",
+  data: data.catchphrase,
+  fields: [
+    { key: "text", label: "Italic tagline" },
+    { key: "paragraph", label: "Supporting paragraph" },
+  ],
+  onSave: (value) => apiPatch(API, "catchphrase", value),
+});
+
+ArrayEditor.mount({
+  container: "#card-cards",
+  label: "Feature cards",
+  items: data.cards,
+  fields: [
+    { key: "imageSrc", label: "Card image src" },
+    { key: "imageAlt", label: "Card image alt" },
+    { key: "text", label: "Button text" },
+    { key: "url", label: "Link URL", placeholder: "#section-id" },
+  ],
+  onSave: (index, value) => apiPatch(API, "cards", value, index),
+  onDelete: (index) => apiDelete(API, "cards", index),
+  onAdd: (item) => apiPost(API, "cards", item),
 });

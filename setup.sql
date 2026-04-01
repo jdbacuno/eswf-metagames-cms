@@ -49,4 +49,37 @@ INSERT INTO page_sections (section, content) VALUES
     { "text": "Meta Movement",      "url": "#meta-movement"      },
     { "text": "Love Story",      "url": "#theme-song"      }
   ]
+}'),
+('hero', '{
+  "backgroundImage": {
+    "src": "src/images/esports-arena.webp",
+    "alt": "Esports Arena"
+  },
+  "cards": [
+    {
+      "imageSrc": "src/images/eswf-metagames-logo.webp",
+      "imageAlt": "ESWF MetaGames logo",
+      "text": "Learn What MetaGames",
+      "url": "#what-are-metagames"
+    },
+    {
+      "imageSrc": "src/images/children-with-vr.webp",
+      "imageAlt": "Children playing with VR",
+      "text": "Explore Sports & Games",
+      "url": "#sports-and-games"
+    },
+    {
+      "imageSrc": "src/images/puzzle.webp",
+      "imageAlt": "Jigsaw puzzle",
+      "text": "Join the Movement",
+      "url": "#meta-movement"
+    }
+  ],
+  "cta": {
+    "text": "Welcome to the MetaGames"
+  },
+  "catchphrase": {
+    "text": "Where Sports, Games, and Digital Worlds Unite",
+    "paragraph": "MetaGames is a global movement that brings together traditional sports, esports, digital sports, and virtual experiences into one unified international event."
+  }
 }');
