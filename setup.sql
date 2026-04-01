@@ -76,7 +76,7 @@ INSERT INTO page_sections (section, content) VALUES
     }
   ],
   "cta": {
-    "text": "Welcome to the MetaGames"
+    "text": "Hawak ni Eugene ang Beat ni Cid"
   },
   "catchphrase": {
     "text": "Where Sports, Games, and Digital Worlds Unite",
