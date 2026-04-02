@@ -82,4 +82,22 @@ INSERT INTO page_sections (section, content) VALUES
     "text": "Where Sports, Games, and Digital Worlds Unite",
     "paragraph": "MetaGames is a global movement that brings together traditional sports, esports, digital sports, and virtual experiences into one unified international event."
   }
+}'),
+('what-are-metagames', '{
+  "title": "What are MetaGames",
+  "text": "MetaGames is not just one sport or one game. It is a combination of physical sports, esports, mind games, and digital competitions happening together under one global platform.",
+  "binaryNum": {
+    "src": "src/images/wam-background.webp",
+    "alt": "Binary numbers"
+  },
+  "athleteVr": {
+    "src": "src/images/vr-headset2.webp",
+    "alt": "Athlete wearing an illuminated VR headset"
+  },
+  "pillars": [
+    { "color": "bg-brand-green",  "text": "LIFE" },
+    { "color": "bg-brand-blue",   "text": "TIME" },
+    { "color": "bg-brand-yellow", "text": "GAME" },
+    { "color": "bg-brand-red",    "text": "META" }
+  ]
 }');
