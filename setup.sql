@@ -100,4 +100,7 @@ INSERT INTO page_sections (section, content) VALUES
     { "color": "bg-brand-yellow", "text": "GAME" },
     { "color": "bg-brand-red",    "text": "META" }
   ]
+}'),
+('marquee', '{
+  "text": "LIFE • TIME • GAME • META •"
 }');
