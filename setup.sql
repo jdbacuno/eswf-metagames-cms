@@ -102,5 +102,5 @@ INSERT INTO page_sections (section, content) VALUES
   ]
 }'),
 ('marquee', '{
-  "text": "LIFE • TIME • GAME • META •"
+  "text": "Mastering the MetaGames of Life, One Move at a Time."
 }');

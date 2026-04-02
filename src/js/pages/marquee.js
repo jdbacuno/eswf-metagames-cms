@@ -13,7 +13,7 @@ ObjectEditor.mount({
     {
       key: "text",
       label: "Marquee text",
-      placeholder: "e.g. LIFE • TIME • GAME • META •",
+      placeholder: "e.g. Mastering the MetaGames of Life, One Move at a Time.",
     },
   ],
   onSave: ({ text }) => apiPatch(API, "text", text),
