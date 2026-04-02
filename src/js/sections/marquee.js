@@ -1,13 +1,13 @@
-const DATA_MARQUEE = './src/data/marquee.json';
+const DATA_MARQUEE = "/api/public/get-section.php?section=marquee";
 
 export const loadMarqueeSection = async () => {
   try {
     const response = await fetch(DATA_MARQUEE);
-    if (!response.ok) throw new Error('Cannot find the file');
+    if (!response.ok) throw new Error("Marquee section data not found.");
     const data = await response.json();
     renderMarqueeSection(data);
   } catch (err) {
-    console.log('Error:', err);
+    console.log("Error:", err);
   }
 }
 
