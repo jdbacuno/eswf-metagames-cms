@@ -1,10 +1,10 @@
 import { initWAMInteractions } from '../main.js';
-const DATA_WHATAREMETAGAMES = './src/data/what-are-metagames.json';
+const DATA_WHATAREMETAGAMES = "/api/public/get-section.php?section=what-are-metagames";
 
 export const loadWhatAreMetaGamesSection = async () => {
   try {
     const response = await fetch(DATA_WHATAREMETAGAMES);
-    if (!response.ok) throw new Error("File data not found.");
+    if (!response.ok) throw new Error("What Are MetaGames section data not found.");
     const data = await response.json();
     renderWhatAreMetaGamesSection(data);
   } catch (err) {
