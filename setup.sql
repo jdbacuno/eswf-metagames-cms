@@ -110,4 +110,39 @@ INSERT INTO page_sections (section, content) VALUES
     "src": "src/images/news-and-update.webp",
     "alt": "News & Update section image"
   }
+}'),
+('sports-and-games', '{
+  "title": "Sports & Games",
+  "slides": [
+    {
+      "imageSrc": "src/images/basketball-hoops.webp",
+      "imageAlt": "Basketball hoop",
+      "title": "Sports & Games",
+      "description": "Physical & Olympic-style sports"
+    },
+    {
+      "imageSrc": "src/images/chess.webp",
+      "imageAlt": "Mind Games",
+      "title": "Mind Sports",
+      "description": "Chess, Scrabble, Sudoku, etc."
+    },
+    {
+      "imageSrc": "src/images/esports.webp",
+      "imageAlt": "Mobile Legends Adventure Poster",
+      "title": "Electronic Sports (Esports)",
+      "description": "MOBA, FPS, RTS, Fighting Games, BR, MMORPG"
+    },
+    {
+      "imageSrc": "src/images/vr-headset.webp",
+      "imageAlt": "Athlete wearing an illuminated VR headset",
+      "title": "Digital & Virtual Sports",
+      "description": "Digital Motorsports|Digital Combat|VR & AR sports"
+    },
+    {
+      "imageSrc": "src/images/classroom.webp",
+      "imageAlt": "Classroom",
+      "title": "Multi-Cultural & Indigenous Sports",
+      "description": "Traditional games from different cultures"
+    }
+  ]
 }');
