@@ -103,4 +103,11 @@ INSERT INTO page_sections (section, content) VALUES
 }'),
 ('marquee', '{
   "text": "Mastering the MetaGames of Life, One Move at a Time."
+}'),
+('news', '{
+  "title": "News & Updates",
+  "image": {
+    "src": "src/images/news-and-update.webp",
+    "alt": "News & Update section image"
+  }
 }');
