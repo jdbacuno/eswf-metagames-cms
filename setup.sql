@@ -185,4 +185,21 @@ INSERT INTO page_sections (section, content) VALUES
     "Professionals",
     "Nations"
   ]
+}'),
+('metagames-emblems', '{
+  "title": "MetaGames Emblem & Symbolism",
+  "motto": "One symbol. Many sports. One global community.",
+  "logo": {
+    "src": "src/images/eswf-metagames-logo.webp",
+    "alt": "MetaGames Logo"
+  },
+  "emblems": [
+    { "color": "Green", "desc": "Multi Cultural Sports", "background": "var(--green)" },
+    { "color": "Blue", "desc": "Electronic Sports", "background": "var(--blue)" },
+    { "color": "Yellow", "desc": "Traditional Sports", "background": "var(--yellow)" },
+    { "color": "Red", "desc": "Active/Digital/Virtual Sports", "background": "var(--red)" },
+    { "color": "White", "desc": "The ESWF Member Nations", "background": "#ffffff" },
+    { "color": "Black", "desc": "The Meta Movement", "background": "#000000" },
+    { "color": "Grey", "desc": "Professional & Amateur Sports", "background": "var(--slate)" }
+  ]
 }');
