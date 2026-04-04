@@ -1,5 +1,22 @@
 import { initSportsGamesInteractions } from '../main.js';
-const DATA_SPORTSANDGAMES = "./src/data/sports-and-games.json";
+
+const DATA_SPORTSANDGAMES = "/api/public/get-section.php?section=sports-and-games";
+
+function slideImage(slide) {
+  if (slide.image?.src) {
+    return { src: slide.image.src, alt: slide.image.alt ?? '' };
+  }
+  return { src: slide.imageSrc ?? '', alt: slide.imageAlt ?? '' };
+}
+
+function descriptionLines(slide) {
+  const d = slide.description;
+  if (Array.isArray(d)) return d;
+  if (typeof d === 'string') {
+    return d.split('|').map((s) => s.trim()).filter(Boolean);
+  }
+  return [];
+}
 
 export const loadSportsAndGames = async () => {
   try {
@@ -10,14 +27,16 @@ export const loadSportsAndGames = async () => {
   } catch (err) {
     console.error("Error:", err);
   }
-}
+};
 
 const renderSportsAndGames = (data) => {
   const sportsAndGames = document.querySelector("#sports-and-games");
   const { title, slides } = data;
 
-  // Slides Loop
-  const slidesHtml = slides.map(slide => {
+  const slidesHtml = slides.map((slide) => {
+    const img = slideImage(slide);
+    const desc = descriptionLines(slide);
+    const aria = (slide.title || desc[0] || "Slide").replace(/"/g, '&quot;');
     return `
       <article
             class="sports-slide min-w-full flex items-stretch relative h-[260px] overflow-hidden max-md:h-[220px] max-[480px]:h-[180px] max-[360px]:h-[160px]"
@@ -33,7 +52,7 @@ const renderSportsAndGames = (data) => {
                 rgba(30, 136, 229, 0) 100%
               );
             "
-            aria-label="Physical &amp; Olympic-style sports"
+            aria-label="${aria}"
           >
             <div
               class="flex-[0_0_50%] flex flex-col justify-center py-8 px-6 pl-20 relative z-[1] max-md:flex-[0_0_55%] max-md:py-5 max-md:px-4 max-md:pl-14 max-[480px]:flex-[0_0_60%] max-[480px]:py-4 max-[480px]:px-3 max-[480px]:pl-[50px] max-[360px]:flex-[0_0_65%] max-[360px]:py-3 max-[360px]:pl-11"
@@ -46,7 +65,7 @@ const renderSportsAndGames = (data) => {
               <p
                 class="text-[clamp(0.8rem,1.4vw,0.95rem)] text-white/85 mb-5 leading-[1.5] max-[480px]:text-[0.75rem] max-[480px]:mb-3"
               >
-                ${slide.description.join("<br>")}
+                ${desc.join("<br>")}
               </p>
               <a href="#" class="inline-block py-[9px] px-6 border-2 border-white text-white text-[0.85rem] font-semibold no-underline rounded-md bg-transparent w-fit transition- duration-200 hover:bg-white hover:text-brand-blue max-[480px]:py-[7px] max-[480px]:px-4 max-[480px]:text-[0.78rem]"
                 >View Details</a
@@ -56,15 +75,26 @@ const renderSportsAndGames = (data) => {
               class="flex-[0_0_50%] m-0 overflow-hidden max-md:flex-[0_0_45%] max-[480px]:flex-[0_0_40%] max-[360px]:flex-[0_0_35%]"
             >
               <img
-                src="${slide.image.src}"
-                alt="${slide.image.alt}"
+                src="${img.src}"
+                alt="${(img.alt || '').replace(/"/g, '&quot;')}"
                 class="sports-mask w-full h-full object-cover object-center block"
               />
             </figure>
           </article>
     `;
   }).join('');
-  
+
+  const dotsHtml = slides
+    .map(
+      (_, i) => `
+          <button
+            class="sports-dot ${i === 0 ? "active" : ""} w-2 h-2 rounded-full border-none bg-white/40 cursor-pointer p-0 transition-all duration-200 [&.active]:bg-white [&.active]:scale-[1.3]"
+            role="tab"
+            aria-selected="${i === 0 ? "true" : "false"}"
+            aria-label="Slide ${i + 1}"
+          ></button>`,
+    )
+    .join('');
 
   sportsAndGames.innerHTML = `
     <div class="w-full">
@@ -96,40 +126,11 @@ const renderSportsAndGames = (data) => {
           class="absolute bottom-[14px] left-1/2 -translate-x-1/2 flex gap-2 z-10"
           role="tablist"
         >
-          <button
-            class="sports-dot active w-2 h-2 rounded-full border-none bg-white/40 cursor-pointer p-0 transition-all duration-200 [&.active]:bg-white [&.active]:scale-[1.3]"
-            role="tab"
-            aria-selected="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            class="sports-dot w-2 h-2 rounded-full border-none bg-white/40 cursor-pointer p-0 transition-all duration-200 [&.active]:bg-white [&.active]:scale-[1.3]"
-            role="tab"
-            aria-selected="false"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            class="sports-dot w-2 h-2 rounded-full border-none bg-white/40 cursor-pointer p-0 transition-all duration-200 [&.active]:bg-white [&.active]:scale-[1.3]"
-            role="tab"
-            aria-selected="false"
-            aria-label="Slide 3"
-          ></button>
-          <button
-            class="sports-dot w-2 h-2 rounded-full border-none bg-white/40 cursor-pointer p-0 transition-all duration-200 [&.active]:bg-white [&.active]:scale-[1.3]"
-            role="tab"
-            aria-selected="false"
-            aria-label="Slide 4"
-          ></button>
-          <button
-            class="sports-dot w-2 h-2 rounded-full border-none bg-white/40 cursor-pointer p-0 transition-all duration-200 [&.active]:bg-white [&.active]:scale-[1.3]"
-            role="tab"
-            aria-selected="false"
-            aria-label="Slide 5"
-          ></button>
+        ${dotsHtml}
         </div>
       </div>
     </div>
   `;
 
   initSportsGamesInteractions();
-}
+};

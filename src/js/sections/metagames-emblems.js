@@ -1,9 +1,11 @@
 import { initColorwheel } from "../color-wheel.js";
-const DATA_METAMOVEMENT = "./src/data/metagames-emblems.json";
+import { escHtml } from "../utilities.js";
+
+const DATA_EMBLEMS = "/api/public/get-section.php?section=metagames-emblems";
 
 export const loadMetagamesEmblems = async () => {
   try {
-    const response = await fetch(DATA_METAMOVEMENT);
+    const response = await fetch(DATA_EMBLEMS);
     if (!response.ok) throw new Error("Data not found.");
     const data = await response.json();
     renderMetagamesEmblems(data);
@@ -14,7 +16,11 @@ export const loadMetagamesEmblems = async () => {
 
 const renderMetagamesEmblems = (data) => {
   const metagamesemblems = document.querySelector("#metagames-emblems");
-  const { logo, title } = data;
+  const { logo, title, motto, emblems } = data;
+
+  const mottoText = motto ?? "";
+  const logoSrc = escHtml(logo?.src ?? "");
+  const logoAlt = escHtml(logo?.alt ?? "");
 
   metagamesemblems.innerHTML = `
 
@@ -23,7 +29,7 @@ const renderMetagamesEmblems = (data) => {
           <h2
             class="text-[1.8rem] font-extrabold mb-10 max-[480px]:text-[1.4rem]"
           >
-           ${title}
+           ${escHtml(title)}
           </h2>
           <div
             class="relative flex items-center mt-[50px] pl-[200px] max-[1023px]:pl-[165px] max-[767px]:pl-[80px] max-[639px]:pl-0 max-[639px]:flex-col max-[639px]:mt-5"
@@ -38,8 +44,8 @@ const renderMetagamesEmblems = (data) => {
                   class="bg-white rounded-full flex items-center justify-center border-[3px] border-black w-[120px] h-[120px] max-[1023px]:w-[106px] max-[1023px]:h-[106px] max-[767px]:w-[74px] max-[767px]:h-[74px] max-[639px]:w-[74px] max-[639px]:h-[74px]"
                 >
                   <img
-                    src="${logo.src}"
-                    alt="${logo.alt}"
+                    src="${logoSrc}"
+                    alt="${logoAlt}"
                     class="w-[75%] h-auto -rotate-[60deg]"
                   />
                 </div>
@@ -64,7 +70,7 @@ const renderMetagamesEmblems = (data) => {
                 <p
                   class="emblems__motto italic text-[1.1rem] mt-[10px] max-[767px]:text-[0.95rem] max-[639px]:text-[0.82rem] max-[639px]:mt-1"
                 >
-                  One symbol. Many sports. One global community.
+                  ${escHtml(mottoText)}
                 </p>
               </div>
               <nav
@@ -88,5 +94,5 @@ const renderMetagamesEmblems = (data) => {
         </div>
 `;
 
-  initColorwheel();
+  initColorwheel({ emblems: Array.isArray(emblems) ? emblems : [], motto: mottoText });
 };

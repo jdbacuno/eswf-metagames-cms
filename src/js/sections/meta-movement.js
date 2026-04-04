@@ -1,4 +1,4 @@
-const DATA_METAMOVEMENT = "./src/data/meta-movement.json";
+const DATA_METAMOVEMENT = "/api/public/get-section.php?section=meta-movement";
 
 export const loadMetaMovement = async () => {
   try {

@@ -218,5 +218,3 @@ export function initSportsGamesInteractions() {
 
   startAuto();
 }
-
-initSportsGamesInteractions();

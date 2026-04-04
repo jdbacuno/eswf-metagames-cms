@@ -1,4 +1,15 @@
-const DATA_THEME_SONG = "./src/data/theme-song.json";
+import { escHtml } from "../utilities.js";
+
+const DATA_THEME_SONG = "/api/public/get-section.php?section=theme-song";
+
+function lyricLines(part) {
+  const t = part.text;
+  if (Array.isArray(t)) return t;
+  if (typeof t === "string") {
+    return t.split("|").map((s) => s.trim()).filter(Boolean);
+  }
+  return [];
+}
 
 export const loadThemeSongSection = async () => {
   try {
@@ -18,16 +29,19 @@ const renderThemeSongSection = (data) => {
   const { heading, title, subtitle, poster, caption, lyrics = [] } = data;
 
   const lyricsHtml = lyrics
-    .map(
-      (part) => `
+    .map((part) => {
+      const lines = lyricLines(part)
+        .map((line) => escHtml(line))
+        .join("<br />");
+      return `
         <div>
-          <h4 class="text-[1.1rem] font-bold mb-2 text-white">${part.label}</h4>
+          <h4 class="text-[1.1rem] font-bold mb-2 text-white">${escHtml(part.label)}</h4>
           <p class="text-[1rem] leading-[1.6] text-white/80">
-            ${part.text.join("<br />")}
+            ${lines}
           </p>
         </div>
-      `,
-    )
+      `;
+    })
     .join("");
 
   themeSong.innerHTML = `
@@ -36,7 +50,7 @@ const renderThemeSongSection = (data) => {
         id="theme-song-heading"
         class="text-[1.8rem] font-bold mb-[30px] text-left max-md:text-center"
       >
-        ${heading}
+        ${escHtml(heading)}
       </h2>
       <div
         class="grid grid-cols-[1.2fr_0.8fr] gap-10 items-start max-md:grid-cols-1 max-md:gap-[30px]"
@@ -47,12 +61,12 @@ const renderThemeSongSection = (data) => {
           >
             <div class="relative w-full h-full">
               <img
-                src="${poster.src}"
-                alt="${poster.alt}"
+                src="${escHtml(poster?.src ?? "")}"
+                alt="${escHtml(poster?.alt ?? "")}"
                 class="w-full h-full object-cover opacity-80"
               />
             </div>
-            <figcaption class="sr-only">${caption}</figcaption>
+            <figcaption class="sr-only">${escHtml(caption)}</figcaption>
           </figure>
         </div>
         <article class="flex flex-col gap-5 max-md:text-center">
@@ -60,10 +74,10 @@ const renderThemeSongSection = (data) => {
             <h3
               class="text-[1.6rem] font-bold text-white mb-1 max-md:text-center"
             >
-              ${title}
+              ${escHtml(title)}
             </h3>
             <p class="text-[1.2rem] font-semibold mb-5 max-md:text-center">
-              ${subtitle}
+              ${escHtml(subtitle)}
             </p>
           </header>
           <div
