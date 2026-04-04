@@ -1,37 +1,42 @@
--- Run this once in MySQL client or phpMyAdmin
-CREATE DATABASE IF NOT EXISTS metagames_cms
+-- ⚠️ FULL RESET
+DROP DATABASE IF EXISTS metagames_cms;
+
+CREATE DATABASE metagames_cms
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
 USE metagames_cms;
 
--- ── Admins table ──────────────────────────────────────────────
+-- ── TABLES ─────────────────────────────────────
+
 CREATE TABLE admins (
-    id            INT          AUTO_INCREMENT PRIMARY KEY,
-    username      VARCHAR(50)  NOT NULL UNIQUE,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    created_at    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ── Page sections table ───────────────────────────────────────
 CREATE TABLE page_sections (
-    id         INT          AUTO_INCREMENT PRIMARY KEY,
-    section    VARCHAR(50)  NOT NULL UNIQUE,   -- 'navbar', 'hero', etc.
-    content    JSON         NOT NULL,
-    updated_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
-                            ON UPDATE CURRENT_TIMESTAMP
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    section VARCHAR(50) NOT NULL UNIQUE,
+    content JSON NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP
 );
 
--- ── Seed initial content ──────────────────────────────────────
+-- ── SEED DATA ──────────────────────────────────
+
 INSERT INTO page_sections (section, content) VALUES
+
 ('header', '{
   "id": 1,
-  "title": "HAWAK NI EUGENE ANG BEAT",
+  "title": "METAGAMES",
   "colors": [
     "bg-brand-green","bg-brand-blue","bg-brand-yellow",
     "bg-brand-red","bg-white","bg-black"
   ]
 }'),
+
 ('navbar', '{
   "logo": {
     "src": "src/images/eswf-metagames-logo.webp",
@@ -42,14 +47,17 @@ INSERT INTO page_sections (section, content) VALUES
     "url": "#"
   },
   "links": [
-    { "text": "Home",               "url": "#main-content"       },
+    { "text": "Home", "url": "#main-content" },
     { "text": "What Are MetaGames", "url": "#what-are-metagames" },
-    { "text": "News & Updates",     "url": "#news-and-update"    },
-    { "text": "Sports & Games",     "url": "#sports-and-games"   },
-    { "text": "Meta Movement",      "url": "#meta-movement"      },
-    { "text": "Love Story",      "url": "#theme-song"      }
+    { "text": "News & Updates", "url": "#news-and-update" },
+    { "text": "Sports & Games", "url": "#sports-and-games" },
+    { "text": "Meta Movement", "url": "#meta-movement" },
+    { "text": "Emblem & Meaning", "url": "#metagames-emblems" },
+    { "text": "Official Theme Song", "url": "#theme-song" },
+    { "text": "Host Nations", "url": "#host-section" }
   ]
 }'),
+
 ('hero', '{
   "backgroundImage": {
     "src": "src/images/esports-arena.webp",
@@ -76,13 +84,14 @@ INSERT INTO page_sections (section, content) VALUES
     }
   ],
   "cta": {
-    "text": "Hawak ni Eugene ang Beat ni Cid"
+    "text": "Welcome to MetaGames"
   },
   "catchphrase": {
     "text": "Where Sports, Games, and Digital Worlds Unite",
     "paragraph": "MetaGames is a global movement that brings together traditional sports, esports, digital sports, and virtual experiences into one unified international event."
   }
 }'),
+
 ('what-are-metagames', '{
   "title": "What are MetaGames",
   "text": "MetaGames is not just one sport or one game. It is a combination of physical sports, esports, mind games, and digital competitions happening together under one global platform.",
@@ -95,15 +104,17 @@ INSERT INTO page_sections (section, content) VALUES
     "alt": "Athlete wearing an illuminated VR headset"
   },
   "pillars": [
-    { "color": "bg-brand-green",  "text": "LIFE" },
-    { "color": "bg-brand-blue",   "text": "TIME" },
+    { "color": "bg-brand-green", "text": "LIFE" },
+    { "color": "bg-brand-blue", "text": "TIME" },
     { "color": "bg-brand-yellow", "text": "GAME" },
-    { "color": "bg-brand-red",    "text": "META" }
+    { "color": "bg-brand-red", "text": "META" }
   ]
 }'),
+
 ('marquee', '{
   "text": "Mastering the MetaGames of Life, One Move at a Time."
 }'),
+
 ('news', '{
   "title": "News & Updates",
   "image": {
@@ -111,6 +122,7 @@ INSERT INTO page_sections (section, content) VALUES
     "alt": "News & Update section image"
   }
 }'),
+
 ('sports-and-games', '{
   "title": "Sports & Games",
   "slides": [
@@ -146,6 +158,7 @@ INSERT INTO page_sections (section, content) VALUES
     }
   ]
 }'),
+
 ('meta-movement', '{
   "title": "The Meta Movement",
   "subtitle": "The Rise of the Meta Movement (2025–2027)",
@@ -186,6 +199,7 @@ INSERT INTO page_sections (section, content) VALUES
     "Nations"
   ]
 }'),
+
 ('metagames-emblems', '{
   "title": "MetaGames Emblem & Symbolism",
   "motto": "One symbol. Many sports. One global community.",
@@ -203,9 +217,10 @@ INSERT INTO page_sections (section, content) VALUES
     { "color": "Grey", "desc": "Professional & Amateur Sports", "background": "var(--slate)" }
   ]
 }'),
+
 ('theme-song', '{
   "heading": "Official Theme Song",
-  "title": "\\"Legends Rise in the Meta Games\\"",
+  "title": "Legends Rise in the Meta Games",
   "subtitle": "Meta Games OST",
   "poster": {
     "src": "src/images/theme-song.webp",
@@ -226,4 +241,67 @@ INSERT INTO page_sections (section, content) VALUES
       "text": "Legends rise, the battle''s on,|Until the final victory is won.|Meta Games, where heroes play,|To lead the world in every way."
     }
   ]
+}'),
+('host-nation', '{
+  "title": "Host Nations & Partners",
+  "subtitle": "Host Cities:",
+  "flagImages": [
+    {
+      "src": "src/images/ph-flag.webp",
+      "alt": "Manila, Philippines"
+    },
+    {
+      "src": "src/images/china-flag.webp",
+      "alt": "Xinjiang, China"
+    }
+  ],
+  "partnerImages": [
+    {
+      "src": "src/images/eswf.webp",
+      "alt": "ESWF"
+    },
+    {
+      "src": "src/images/gawsf.webp",
+      "alt": "GAWSF"
+    },
+    {
+      "src": "src/images/psc-logo.webp",
+      "alt": "PSC Logo"
+    }
+  ]
+}'),
+('footer', '{
+  "logo": {
+    "src": "src/images/eswf-metagames-logo.webp",
+    "alt": "MetaGames Logo"
+  },
+  "columns": [
+    {
+      "title": "Quick Links:",
+      "links": [
+        { "text": "Home", "url": "#main-content" },
+        { "text": "What Are MetaGames", "url": "#what-are-metagames" },
+        { "text": "News & Updates", "url": "#news-and-update" }
+      ]
+    },
+    {
+      "title": "",
+      "links": [
+        { "text": "Sports & Games", "url": "#sports-and-games" },
+        { "text": "Meta Movement", "url": "#meta-movement" },
+        { "text": "Emblem & Meaning", "url": "#metagames-emblems" }
+      ]
+    },
+    {
+      "title": "",
+      "links": [
+        { "text": "Official Theme Song", "url": "#theme-song" },
+        { "text": "Host Nations", "url": "#host-section" }
+      ]
+    }
+  ],
+  "bottomBar": {
+    "copyright": "© 2025 MetaGames All Rights Reserved.",
+    "credit": "Designed & Developed by: BB 88 Advertising and Digital Solutions Inc."
+  }
 }');

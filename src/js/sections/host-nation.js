@@ -1,4 +1,4 @@
-const DATA_HOSTNATION = "./src/data/host-nation.json";
+const DATA_HOSTNATION = "/api/public/get-section.php?section=host-nation";
 
 export const loadHostNationSection = async () => {
   try {
