@@ -1,10 +1,10 @@
 import { initNewsUpdateInteractions } from '../main.js';
-const DATA_NEWSUPDATE = './src/data/news.json';
+const DATA_NEWSUPDATE = "/api/public/get-section.php?section=news";
 
 export const loadNewsUpdateSection = async () => {
   try {
     const response = await fetch(DATA_NEWSUPDATE);
-    if (!response.ok) throw new Error('File not found');
+    if (!response.ok) throw new Error("News & Updates section data not found.");
     const data = await response.json();
     renderNewsUpdateSection(data);
   } catch (err) {
